@@ -1,5 +1,32 @@
 var id = 0;
 
+updateColors = function (control) {
+    for (var key in control) {
+        if (key !== 'updateColors' && key.toLowerCase().includes('color')) {
+            var val = control[key].charAt(0).toLowerCase() + control[key].slice(1);
+
+            if (val === 'primary' || val === 'primaryDark' || val === 'accent'
+                || val === 'background' || val === 'backgroundDark' || val === 'card'
+                || val === 'textPrimary' || val === 'textSecondary' || val === 'textDisabled'
+                || val === 'textPrimaryWhite' || val === 'textSecondaryWhite' || val === 'textDisabledWhite'
+                || val === 'textPrimaryBlack' || val === 'textSecondaryBlack' || val === 'textDisabledBlack') {
+                var cssAttr = "";
+                switch (key) {
+                    case 'color':
+                        cssAttr = 'background-color';
+                        break;
+                    case 'fontColor':
+                        cssAttr = 'color';
+                        break;
+                }
+
+                var hashtag = !theme[val].includes('r') && !theme[val].includes('#') ? "#" : "";
+                $(getElementByIdentifier(control.identifier)).css(cssAttr, hashtag + theme[val]);
+            }
+        }
+    }
+}
+
 function Control() {
     this.identifier = id++;
     this.type = null;
@@ -15,33 +42,6 @@ function Control() {
     this.bottom = null;
     this.width = null;
     this.height = null;
-
-    this.updateColors = function () {
-        for (var key in this) {
-            if (key !== 'updateColors' && key.toLowerCase().includes('color')) {
-                var val = this[key].charAt(0).toLowerCase() + this[key].slice(1);
-
-                if (val === 'primary' || val === 'primaryDark' || val === 'accent'
-                    || val === 'background' || val === 'card'
-                    || val === 'textPrimary' || val === 'textSecondary' || val === 'textDisabled'
-                    || val === 'textPrimaryWhite' || val === 'textSecondaryWhite' || val === 'textDisabledWhite'
-                    || val === 'textPrimaryBlack' || val === 'textSecondaryBlack' || val === 'textDisabledBlack') {
-                    var cssAttr = "";
-                    switch (key) {
-                        case 'color':
-                            cssAttr = 'background-color';
-                            break;
-                        case 'fontColor':
-                            cssAttr = 'color';
-                            break;
-                    }
-
-                    var hashtag = !theme[val].includes('r') && !theme[val].includes('#') ? "#" : "";
-                    $(getElementByIdentifier(this.identifier)).css(cssAttr, hashtag + theme[val]);
-                }
-            }
-        }
-    }
 }
 
 function ButtonControl() {

@@ -18,7 +18,7 @@ $(document).keydown(function(e) {
 
 /********** Theme **********/
 function themeClicked() {
-    theme.updateThemePanel();
+    updateThemePanel();
     
     if (document.getElementById('theme').getBoundingClientRect().left >= $('body').innerWidth())
         $('#theme').transition({ x: -512 }, 300, 'easeInOutCubic');
@@ -74,7 +74,7 @@ function buttonButtonClicked() {
     var control = new ButtonControl();
     controls[control.identifier] = control;
     $(addedButton).data('identifier', control.identifier);
-    control.updateColors();
+    updateColors(control);
 
     controls[$(contextMenuControlRef).data('identifier')].children.push(control.identifier);
 
@@ -105,7 +105,7 @@ function divButtonClicked() {
     addedDiv = addedDiv[0];
     $(addedDiv).data('identifier', control.identifier);
     controls[control.identifier] = control;
-    control.updateColors();
+    updateColors(control);
 
     $(addedDiv).click(function (e) {
         openMenu(controls[$(addedDiv).data('identifier')].type, addedDiv);
@@ -133,7 +133,7 @@ function imageButtonClicked() {
     var control = new ImageControl();
     $(addedImage).data('identifier', control.identifier);
     controls[control.identifier] = control;
-    control.updateColors();
+    updateColors(control);
 
     $(addedImage).click(function (e) {
         openMenu(controls[$(addedImage).data('identifier')].type, addedImage);
@@ -155,7 +155,7 @@ function labelButtonClicked() {
     var control = new LabelControl();
     controls[control.identifier] = control;
     $(addedLabel).data('identifier', control.identifier);
-    control.updateColors();
+    updateColors(control);
 
     controls[$(contextMenuControlRef).data('identifier')].children.push(control.identifier);
 

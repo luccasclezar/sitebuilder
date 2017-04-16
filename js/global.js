@@ -171,8 +171,9 @@ function loadProject(name) {
     $('#siteArea').empty();
 
     controls = Storages.localStorage.get(name + '_controls');
-    id = Storages.localStorage.get(name + '_id');
     $('#siteArea').append(Storages.localStorage.get(name + '_elements'));
+    id = Storages.localStorage.get(name + '_id');
+    theme = Storages.localStorage.get(name + '_theme');
 
     for (var key in controls) {
         control = controls[key];
@@ -201,8 +202,9 @@ function dialogSave() {
     }
 
     Storages.localStorage.set($('#saveName').val() + "_controls", controls);
-    Storages.localStorage.set($('#saveName').val() + "_id", id);
     Storages.localStorage.set($('#saveName').val() + "_elements", $('#siteArea').html());
+    Storages.localStorage.set($('#saveName').val() + "_id", id);
+    Storages.localStorage.set($('#saveName').val() + "_theme", theme);
     dialogCancel('saveDialog');
 }
 

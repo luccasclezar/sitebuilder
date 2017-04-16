@@ -134,7 +134,7 @@ function setGeneralContextMenu() {
         if (val.includes('#'))
             $(contextMenuControlRef).css('background-color', val);
         else
-            controls[$(contextMenuControlRef).data('identifier')].updateColors();
+            updateColors(controls[$(contextMenuControlRef).data('identifier')]);
     });
     $('#elevationProperty').on('input', function () {
         var isInset = ($('#div-insetProperty:checked').val() === 'on');
@@ -163,7 +163,7 @@ function setGeneralContextMenu() {
         if (val.includes('#'))
             $(contextMenuControlRef).css('color', val);
         else
-            controls[$(contextMenuControlRef).data('identifier')].updateColors();
+            updateColors(controls[$(contextMenuControlRef).data('identifier')]);
     });
     $('#fontSizeProperty').on('input', function () {
         $(contextMenuControlRef).css('font-size', $('#fontSizeProperty').val());
@@ -177,9 +177,9 @@ function setGeneralContextMenu() {
 
         controls[$(contextMenuControlRef).data('identifier')].height = $('#heightProperty').val();
     });
-    $('#horizontalAlignmentProperty').on('input', function () {
-        $(contextMenuControlRef).css('text-align', $('#horizontalAlignmentProperty').val());
-        controls[$(contextMenuControlRef).data('identifier')].horizontalAlignment = $('#horizontalAlignmentProperty').val();
+    $('#horizontalTextAlignmentProperty').on('input', function () {
+        $(contextMenuControlRef).css('text-align', $('#horizontalTextAlignmentProperty').val());
+        controls[$(contextMenuControlRef).data('identifier')].horizontalTextAlignment = $('#horizontalTextAlignmentProperty').val();
     });
     $('#insetProperty').change(function () {
         if (this.checked && !$(contextMenuControlRef).css('box-shadow').includes('inset')) {
@@ -372,7 +372,7 @@ function setContextMenuBindings(control) {
         if (control.horizontalTextAlignment)
             $('#horizontalTextAlignmentProperty').val(control.horizontalTextAlignment);
         else
-            $('#horizontalTextAlignmentProperty').select();
+            $('#horizontalTextAlignmentProperty').val("center");
     }
     if (control.hasOwnProperty('inset')) {
         $('#insetPropertyDiv').show();
