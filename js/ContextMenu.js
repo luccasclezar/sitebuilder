@@ -177,6 +177,10 @@ function setGeneralContextMenu() {
 
         controls[$(contextMenuControlRef).data('identifier')].height = $('#heightProperty').val();
     });
+    $('#horizontalAlignmentProperty').on('input', function () {
+        $(contextMenuControlRef).css('float', $('#horizontalAlignmentProperty').val());
+        controls[$(contextMenuControlRef).data('identifier')].horizontalAlignment = $('#horizontalAlignmentProperty').val();
+    });
     $('#horizontalTextAlignmentProperty').on('input', function () {
         $(contextMenuControlRef).css('text-align', $('#horizontalTextAlignmentProperty').val());
         controls[$(contextMenuControlRef).data('identifier')].horizontalTextAlignment = $('#horizontalTextAlignmentProperty').val();
@@ -196,6 +200,10 @@ function setGeneralContextMenu() {
     $('#textProperty').on('input', function () {
         contextMenuControlRef.innerHTML = $('#textProperty').val().split("\n").join("<br>");
         controls[$(contextMenuControlRef).data('identifier')].text = $('#textProperty').val().split("\n").join("<br>");
+    });
+    $('#verticalAlignmentProperty').on('input', function () {
+        $(contextMenuControlRef).css('align-self', $('#verticalAlignmentProperty').val());
+        controls[$(contextMenuControlRef).data('identifier')].verticalAlignment = $('#verticalAlignmentProperty').val();
     });
 }
 
@@ -366,6 +374,14 @@ function setContextMenuBindings(control) {
         else
             $('#heightProperty').val("");
     }
+    if (control.hasOwnProperty('horizontalAlignment')) {
+        $('#horizontalAlignmentPropertyDiv').show();
+        
+        if (control.horizontalAlignment)
+            $('#horizontalAlignmentProperty').val(control.horizontalAlignment);
+        else
+            $('#horizontalAlignmentProperty').val('left');
+    }
     if (control.hasOwnProperty('horizontalTextAlignment')) {
         $('#horizontalTextAlignmentPropertyDiv').show();
 
@@ -397,6 +413,14 @@ function setContextMenuBindings(control) {
             $('#textProperty').val(control.text);
         else
             $('#textProperty').val("");
+    }
+    if (control.hasOwnProperty('verticalAlignment')) {
+        $('#verticalAlignmentPropertyDiv').show();
+        
+        if (control.verticalAlignment)
+            $('#verticalAlignmentProperty').val(control.verticalAlignment);
+        else
+            $('#verticalAlignmentProperty').val('center');
     }
 }
 

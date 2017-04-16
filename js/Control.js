@@ -29,28 +29,31 @@ updateColors = function (control) {
 
 function Control() {
     this.identifier = id++;
-    this.type = null;
+    this.type = "";
 
-    this.marginLeft = null;
-    this.marginTop = null;
-    this.marginRight = null;
-    this.marginBottom = null;
+    this.horizontalAlignment = "";
+    this.verticalAlignment = "";
 
-    this.left = null;
-    this.top = null;
-    this.right = null;
-    this.bottom = null;
-    this.width = null;
-    this.height = null;
+    this.marginLeft = "";
+    this.marginTop = "";
+    this.marginRight = "";
+    this.marginBottom = "";
+
+    this.left = "";
+    this.top = "";
+    this.right = "";
+    this.bottom = "";
+    this.width = "";
+    this.height = "";
 }
 
 function ButtonControl() {
     Control.apply(this, arguments);
 
     this.color = "Primary";
-    this.text = null;
+    this.text = "";
     this.fontColor = "TextPrimaryWhite";
-    this.fontSize = null;
+    this.fontSize = "";
 
     this.type = "Button";
 }
@@ -59,13 +62,13 @@ function ContainerControl() {
     Control.apply(this, arguments);
 
     this.color = "Background";
-    this.elevation = null;
-    this.inset = null;
+    this.elevation = "";
+    this.inset = "";
 
-    this.paddingLeft = null;
-    this.paddingTop = null;
-    this.paddingRight = null;
-    this.paddingBottom = null;
+    this.paddingLeft = "";
+    this.paddingTop = "";
+    this.paddingRight = "";
+    this.paddingBottom = "";
 
     this.type = "Container";
     this.children = [];
@@ -74,9 +77,9 @@ function ContainerControl() {
 function ImageControl() {
     Control.apply(this, arguments);
 
-    this.aspect = null;
-    this.elevation = null;
-    this.source = null;
+    this.aspect = "";
+    this.elevation = "";
+    this.source = "";
 
     this.type = "Image";
 }
@@ -85,9 +88,9 @@ function LabelControl() {
     Control.apply(this, arguments);
 
     this.fontColor = "TextPrimary";
-    this.fontSize = null;
-    this.horizontalTextAlignment = null;
-    this.text = null;
+    this.fontSize = "";
+    this.horizontalTextAlignment = "";
+    this.text = "";
 
     this.type = "Label";
 }
