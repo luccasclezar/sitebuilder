@@ -14,6 +14,10 @@ $(document).keydown(function(e) {
             deleteControl();
         }
     }
+    else if (e.which == 83 && e.ctrlKey) {
+        save();
+        e.preventDefault();
+    }
 });
 
 /********** Theme **********/
