@@ -213,214 +213,23 @@ function setContextMenuBindings(control) {
             $($("#contextMenu").children()[i]).hide();
     }
 
-    /********** Margin **********/
-    if (control.hasOwnProperty('marginLeft')) {
-        $('#marginPropertyDiv').show();
+    for (var key in control) {
+        if (key.includes('$') || (typeof control[key] !== 'string' && typeof control[key] !== 'object')) continue;
 
-        if (control.marginLeft)
-            $('#marginLeftProperty').val(control.marginLeft);
-        else
-            $('#marginLeftProperty').val("");
-    }
-    if (control.hasOwnProperty('marginTop')) {
-        $('#marginPropertyDiv').show();
+        if (!control[key]) {
+            $("#" + key.lowerFirst() + "Property").val(control[key]);
+        } else {
+            $("#" + key.lowerFirst() + "Property").val("");
+        }
 
-        if (control.marginTop)
-            $('#marginTopProperty').val(control.marginTop);
-        else
-            $('#marginTopProperty').val("");
-    }
-    if (control.hasOwnProperty('marginRight')) {
-        $('#marginPropertyDiv').show();
-
-        if (control.marginRight)
-            $('#marginRightProperty').val(control.marginRight);
-        else
-            $('#marginRightProperty').val("");
-    }
-    if (control.hasOwnProperty('marginBottom')) {
-        $('#marginPropertyDiv').show();
-
-        if (control.marginBottom)
-            $('#marginBottomProperty').val(control.marginBottom);
-        else
-            $('#marginBottomProperty').val("");
-    }
-    /********** Margin end **********/
-
-    /********** Padding **********/
-    if (control.hasOwnProperty('paddingLeft')) {
-        $('#paddingPropertyDiv').show();
-
-        if (control.paddingLeft)
-            $('#paddingLeftProperty').val(control.paddingLeft);
-        else
-            $('#paddingLeftProperty').val('');
-    }
-    if (control.hasOwnProperty('paddingTop')) {
-        $('#paddingPropertyDiv').show();
-
-        if (control.paddingTop)
-            $('#paddingTopProperty').val(control.paddingTop);
-        else
-            $('#paddingTopProperty').val('');
-    }
-    if (control.hasOwnProperty('paddingRight')) {
-        $('#paddingPropertyDiv').show();
-
-        if (control.paddingRight)
-            $('#paddingRightProperty').val(control.paddingRight);
-        else
-            $('#paddingRightProperty').val('');
-    }
-    if (control.hasOwnProperty('paddingBottom')) {
-        $('#paddingPropertyDiv').show();
-
-        if (control.paddingBottom)
-            $('#paddingBottomProperty').val(control.paddingBottom);
-        else
-            $('#paddingBottomProperty').val('');
-    }
-    /********** Padding end **********/
-
-    /********** Position **********/
-    if (control.hasOwnProperty('left')) {
-        $('#positionPropertyDiv').show();
-
-        if (control.left)
-            $('#leftProperty').val(control.left);
-        else
-            $('#leftProperty').val("");
-    }
-    if (control.hasOwnProperty('top')) {
-        $('#positionPropertyDiv').show();
-
-        if (control.top)
-            $('#topProperty').val(control.top);
-        else
-            $('#topProperty').val("");
-    }
-    if (control.hasOwnProperty('right')) {
-        $('#positionPropertyDiv').show();
-
-        if (control.right)
-            $('#rightProperty').val(control.right);
-        else
-            $('#rightProperty').val("");
-    }
-    if (control.hasOwnProperty('bottom')) {
-        $('#positionPropertyDiv').show();
-
-        if (control.bottom)
-            $('#bottomProperty').val(control.bottom);
-        else
-            $('#bottomProperty').val("");
-    }
-    if (control.hasOwnProperty('height')) {
-        $('#positionPropertyDiv').show();
-
-        if (control.height)
-            $('#heightProperty').val(control.height);
-        else
-            $('#heightProperty').val("");
-    }
-    if (control.hasOwnProperty('width')) {
-        $('#positionPropertyDiv').show();
-
-        if (control.width)
-            $('#widthProperty').val(control.width);
-        else
-            $('#widthProperty').val("");
-    }
-    /********** Position end **********/
-
-    if (control.hasOwnProperty('color')) {
-        $('#colorPropertyDiv').show();
-
-        if (control.color)
-            $('#colorProperty').val(control.color);
-        else
-            $('#colorProperty').val("");
-    }
-    if (control.hasOwnProperty('elevation')) {
-        $('#elevationPropertyDiv').show();
-
-        if (control.elevation)
-            $('#elevationProperty').val(control.elevation);
-        else
-            $('#elevationProperty').val("");
-    }
-    if (control.hasOwnProperty('fontColor')) {
-        $('#fontColorPropertyDiv').show();
-
-        if (control.fontColor)
-            $('#fontColorProperty').val(control.fontColor);
-        else
-            $('#fontColorProperty').val("");
-    }
-    if (control.hasOwnProperty('fontSize')) {
-        $('#fontSizePropertyDiv').show();
-
-        if (control.fontSize)
-            $('#fontSizeProperty').val(control.fontSize);
-        else
-            $('#fontSizeProperty').val("");
-    }
-    if (control.hasOwnProperty('height')) {
-        $('#heightPropertyDiv').show();
-
-        if (control.height)
-            $('#heightProperty').val(control.height);
-        else
-            $('#heightProperty').val("");
-    }
-    if (control.hasOwnProperty('horizontalAlignment')) {
-        $('#horizontalAlignmentPropertyDiv').show();
+        if (key.includes("Left") || key.includes("Top") || key.includes("Right") || key.includes("Bottom")) {
+            key = key.replace(new RegExp("Left|Right|Top|Bottom"), "");
+        }
+        else if(key.includes("width")) {
+            key = "position";
+        }
         
-        if (control.horizontalAlignment)
-            $('#horizontalAlignmentProperty').val(control.horizontalAlignment);
-        else
-            $('#horizontalAlignmentProperty').val('left');
-    }
-    if (control.hasOwnProperty('horizontalTextAlignment')) {
-        $('#horizontalTextAlignmentPropertyDiv').show();
-
-        if (control.horizontalTextAlignment)
-            $('#horizontalTextAlignmentProperty').val(control.horizontalTextAlignment);
-        else
-            $('#horizontalTextAlignmentProperty').val("center");
-    }
-    if (control.hasOwnProperty('inset')) {
-        $('#insetPropertyDiv').show();
-
-        if (control.inset)
-            $('#insetProperty').val(control.inset);
-        else
-            $('#insetProperty').val("");
-    }
-    if (control.hasOwnProperty('source')) {
-        $('#sourcePropertyDiv').show();
-
-        if (control.source && control.source.includes('C:\\'))
-            $('#fileSourceProperty').val(control.source);
-        else
-            $('#fileSourceProperty').val('');
-    }
-    if (control.hasOwnProperty('text')) {
-        $('#textPropertyDiv').show();
-
-        if (control.text)
-            $('#textProperty').val(control.text);
-        else
-            $('#textProperty').val("");
-    }
-    if (control.hasOwnProperty('verticalAlignment')) {
-        $('#verticalAlignmentPropertyDiv').show();
-        
-        if (control.verticalAlignment)
-            $('#verticalAlignmentProperty').val(control.verticalAlignment);
-        else
-            $('#verticalAlignmentProperty').val('center');
+        $("#" + key.lowerFirst() + "PropertyDiv").show();
     }
 }
 

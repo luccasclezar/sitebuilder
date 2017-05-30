@@ -3,6 +3,11 @@ Array.prototype.move = function (from, to) {
     return this;
 };
 
+String.prototype.lowerFirst = function() {
+    var str = this.charAt(0).toLowerCase() + this.slice(1);
+    return str;
+}
+
 function getElementByIdentifier(id, element) {
     if (!element) element = "#siteArea";
 
