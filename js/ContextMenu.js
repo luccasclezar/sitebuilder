@@ -1,3 +1,48 @@
+var copiedControl;
+var copiedElement;
+
+function copy(element) {
+    if (!contextMenuControlRef && !element) {
+        showSnackbar("Select a Control.");
+        return;
+    }
+
+    if (!element)
+        showSnackbar("Copied!");
+
+    if (!element) element = contextMenuControlRef;
+
+    copiedControl = getCopy(controls[$(element).data('identifier')]);
+    copiedElement = getElementByIdentifier($(element).data('identifier'));
+}
+
+function paste() {
+    if (!copiedControl || !copiedElement || (copiedControl.needsContainer && !(controls[$(contextMenuControlRef).data('identifier')] instanceof ContainerControl))) {
+        showSnackbar("Select a container.");
+        return;
+    }
+
+    var appendTo = contextMenuControlRef ? contextMenuControlRef : document.getElementById('siteArea');
+
+    $(appendTo).append(copiedElement.outerHTML);
+    Waves.attach(appendTo.className, ['no-pointer']);
+
+    var addedElement = $(appendTo).children()[$(contextMenuControlRef).children().length - 1];
+
+    controls[copiedControl.identifier] = copiedControl;
+    $(addedElement).data('identifier', copiedControl.identifier);
+    updateColors(copiedControl);
+
+    controls[$(appendTo).data('identifier')].children.push(copiedControl.identifier);
+
+    $(addedElement).click(function (e) {
+        openMenu(controls[$(addedElement).data('identifier')].type, addedElement);
+        e.stopPropagation();
+    });
+
+    copy(copiedElement);
+}
+
 function moveUp() {
     var currentIndex = $(contextMenuControlRef).index();
 
@@ -15,7 +60,11 @@ function moveDown() {
 }
 
 function clearImageClicked() {
-    $(contextMenuControlRef).children()[0].src = "../images/default_image.jpg";
+    if (controls[$(contextMenuControlRef).data('identifier')].type == "Image")
+        $(contextMenuControlRef).children()[0].src = "../images/default_image.jpg";
+    else if (controls[$(contextMenuControlRef).data('identifier')].type == "Container")
+        $(contextMenuControlRef).css('background-image', "url()");
+
     controls[$(contextMenuControlRef).data('identifier')].source = null;
 }
 
@@ -148,11 +197,17 @@ function setGeneralContextMenu() {
     });
     $('#fileSourceProperty').on('change', function (evt) {
         if ($('#fileSourceProperty').val()) {
-            $(contextMenuControlRef).children()[0].src = processFile(evt, $(contextMenuControlRef).children()[0]);
-            controls[$(contextMenuControlRef).data('identifier')].source = $('#urlSourceProperty').val();
+            if (controls[$(contextMenuControlRef).data('identifier')].type == "Image")
+                processFile(evt, $(contextMenuControlRef).children()[0]);
+            else if (controls[$(contextMenuControlRef).data('identifier')].type == "Container")
+                processFile(evt, $(contextMenuControlRef), true);
         }
         else {
-            $(contextMenuControlRef).children()[0].src = "../images/default_image.jpg";
+            if (controls[$(contextMenuControlRef).data('identifier')].type == "Image")
+                $(contextMenuControlRef).children()[0].src = "../images/default_image.jpg";
+            else if (controls[$(contextMenuControlRef).data('identifier')].type == "Container")
+                $(contextMenuControlRef).css('background-image', "url()");
+
             controls[$(contextMenuControlRef).data('identifier')].source = null;
         }
     });
@@ -216,7 +271,7 @@ function setContextMenuBindings(control) {
     for (var key in control) {
         if (key.includes('$') || (typeof control[key] !== 'string' && typeof control[key] !== 'object')) continue;
 
-        if (!control[key]) {
+        if (control[key]) {
             $("#" + key.lowerFirst() + "Property").val(control[key]);
         } else {
             $("#" + key.lowerFirst() + "Property").val("");
@@ -225,10 +280,10 @@ function setContextMenuBindings(control) {
         if (key.includes("Left") || key.includes("Top") || key.includes("Right") || key.includes("Bottom")) {
             key = key.replace(new RegExp("Left|Right|Top|Bottom"), "");
         }
-        else if(key.includes("width")) {
+        else if (key.includes("width")) {
             key = "position";
         }
-        
+
         $("#" + key.lowerFirst() + "PropertyDiv").show();
     }
 }

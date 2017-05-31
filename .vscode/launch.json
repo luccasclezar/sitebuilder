@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome",
-            "url": "http://colossus:8000/html",
+            "url": "http://colossus:8000/html/index.html",
             "webRoot": "${workspaceRoot}"
         },
         {

@@ -18,6 +18,14 @@ $(document).keydown(function(e) {
         save();
         e.preventDefault();
     }
+    else if (e.which == 67 && e.ctrlKey) {
+        copy();
+        e.preventDefault();
+    }
+    else if (e.which == 86 && e.ctrlKey) {
+        paste();
+        e.preventDefault();
+    }
 });
 
 /********** Theme **********/

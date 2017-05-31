@@ -5,6 +5,8 @@
     width: 100%;
 
     background-color: #EEE;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 .childDiv {

@@ -27,9 +27,17 @@ updateColors = function (control) {
     }
 }
 
+function getCopy(control) {
+    var copiedControl = JSON.parse(JSON.stringify(control));
+    copiedControl.identifier = id++;
+
+    return copiedControl;
+}
+
 function Control() {
     this.identifier = id++;
     this.type = "";
+    this.needsContainer = false;
 
     this.horizontalAlignment = "";
     this.verticalAlignment = "";
@@ -49,9 +57,10 @@ function Control() {
 
 function ButtonControl() {
     Control.apply(this, arguments);
+    this.needsContainer = true;
 
     this.color = "Primary";
-    this.text = "";
+    this.text = "DEFAULT";
     this.fontColor = "TextPrimaryWhite";
     this.fontSize = "";
 
@@ -64,6 +73,7 @@ function ContainerControl() {
     this.color = "Background";
     this.elevation = "";
     this.inset = "";
+    this.source = "";
 
     this.paddingLeft = "";
     this.paddingTop = "";
@@ -86,6 +96,7 @@ function ImageControl() {
 
 function LabelControl() {
     Control.apply(this, arguments);
+    this.needsContainer = true;
 
     this.fontColor = "TextPrimary";
     this.fontSize = "";

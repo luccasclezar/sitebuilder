@@ -73,16 +73,20 @@ function populateList(childrenArray, iteration) {
     }
 }
 
-function processFile(evt, element) {
+function processFile(evt, element, isCSS = false) {
     var tgt = evt.target || window.event.srcElement,
         files = tgt.files;
 
     // FileReader support
     if (FileReader && files && files.length) {
         var fr = new FileReader();
-        fr.onload = function () {
-            element.src = fr.result;
+        fr.onload = function (file, evt) {
+            if(isCSS)
+                $(element).css('background-image', 'url("' + fr.result + '")');
+            else
+                element.src = fr.result;
         }
+        controls[element.data('identifier')].source = files[0].name;
         fr.readAsDataURL(files[0]);
     }
 }
