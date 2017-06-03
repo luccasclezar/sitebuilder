@@ -1,20 +1,16 @@
 .defaultDiv {
     position: relative;
-
     height: 156px;
     width: 100%;
-
     background-color: #EEE;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 }
 
 .childDiv {
     position: relative;
-
     height: 126px;
     width: 156px;
-
     background-color: #FFF;
     border-radius: 2px;
 }
@@ -22,22 +18,18 @@
 .defaultImage {
     height: 60%;
     width: 100%;
-
     object-fit: cover;
 }
 
 .fullImage {
     height: 256px;
     width: 100%;
-
     object-fit: cover;
 }
 
 .defaultLabel {
     position: relative;
-
     width: 100%;
-
     font-size: 22px;
     line-height: 1.4;
     margin: 0;

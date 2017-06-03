@@ -1,3 +1,13 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var id = 0;
 function updateColors(control) {
     for (var key in control) {
@@ -28,59 +38,82 @@ function getCopy(control) {
     copiedControl.identifier = id++;
     return copiedControl;
 }
-function Control() {
-    this.identifier = id++;
-    this.type = "";
-    this.needsContainer = false;
-    this.horizontalAlignment = "";
-    this.verticalAlignment = "";
-    this.marginLeft = "";
-    this.marginTop = "";
-    this.marginRight = "";
-    this.marginBottom = "";
-    this.left = "";
-    this.top = "";
-    this.right = "";
-    this.bottom = "";
-    this.width = "";
-    this.height = "";
-}
-function ButtonControl() {
-    Control.apply(this, arguments);
-    this.needsContainer = true;
-    this.color = "Primary";
-    this.text = "DEFAULT";
-    this.fontColor = "TextPrimaryWhite";
-    this.fontSize = "";
-    this.type = "Button";
-}
-function ContainerControl() {
-    Control.apply(this, arguments);
-    this.color = "Background";
-    this.elevation = "";
-    this.inset = "";
-    this.source = "";
-    this.paddingLeft = "";
-    this.paddingTop = "";
-    this.paddingRight = "";
-    this.paddingBottom = "";
-    this.type = "Container";
-    this.children = [];
-}
-function ImageControl() {
-    Control.apply(this, arguments);
-    this.aspect = "";
-    this.elevation = "";
-    this.source = "";
-    this.type = "Image";
-}
-function LabelControl() {
-    Control.apply(this, arguments);
-    this.needsContainer = true;
-    this.fontColor = "TextPrimary";
-    this.fontSize = "";
-    this.horizontalTextAlignment = "";
-    this.text = "";
-    this.type = "Label";
-}
+var Control = (function () {
+    function Control() {
+        this.identifier = id++;
+        this.type = "";
+        this.needsContainer = false;
+        this.horizontalAlignment = "";
+        this.verticalAlignment = "";
+        this.marginLeft = "";
+        this.marginTop = "";
+        this.marginRight = "";
+        this.marginBottom = "";
+        this.left = "";
+        this.top = "";
+        this.right = "";
+        this.bottom = "";
+        this.width = "";
+        this.height = "";
+    }
+    return Control;
+}());
+var ButtonControl = (function (_super) {
+    __extends(ButtonControl, _super);
+    function ButtonControl() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.needsContainer = true;
+        _this.color = "Primary";
+        _this.text = "DEFAULT";
+        _this.fontColor = "TextPrimaryWhite";
+        _this.fontSize = "";
+        _this.type = "Button";
+        return _this;
+    }
+    return ButtonControl;
+}(Control));
+var ContainerControl = (function (_super) {
+    __extends(ContainerControl, _super);
+    function ContainerControl() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.color = "Background";
+        _this.elevation = "";
+        _this.inset = "";
+        _this.source = "";
+        _this.paddingLeft = "";
+        _this.paddingTop = "";
+        _this.paddingRight = "";
+        _this.paddingBottom = "";
+        _this.type = "Container";
+        _this.children = [];
+        return _this;
+    }
+    return ContainerControl;
+}(Control));
+var ImageControl = (function (_super) {
+    __extends(ImageControl, _super);
+    function ImageControl() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.aspect = "";
+        _this.elevation = "";
+        _this.source = "";
+        _this.type = "Image";
+        return _this;
+    }
+    return ImageControl;
+}(Control));
+var LabelControl = (function (_super) {
+    __extends(LabelControl, _super);
+    function LabelControl() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.needsContainer = true;
+        _this.fontColor = "TextPrimary";
+        _this.fontSize = "";
+        _this.horizontalTextAlignment = "";
+        _this.text = "";
+        _this.type = "Label";
+        return _this;
+    }
+    return LabelControl;
+}(Control));
 //# sourceMappingURL=Control.js.map

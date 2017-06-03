@@ -43,14 +43,14 @@ function populateList(childrenArray, iteration) {
     for (var i = 0; i < childrenArray.length; i++) {
         var control = controls[$(childrenArray[i]).data('identifier')];
         var addedChild = $('<div class="listControl"><p>' + control.type + '</p></div>');
-        $(addedChild).attr('data-identifier', control.identifier + 10000);
+        $(addedChild).data('identifier', control.identifier + 10000);
         $('#controlsList').append(addedChild);
         $(addedChild).click(function () {
             if (!isScrolledIntoView(this)) {
                 $('#siteArea').stop().animate({ scrollTop: this.getBoundingClientRect().top }, 400, 'easeInOutCubic');
             }
             var identifier = $(this).data('identifier') - 10000;
-            (controls[identifier].type, getElementByIdentifier(identifier));
+            openMenu(controls[identifier].type, getElementByIdentifier(identifier));
         });
         $(addedChild).css('text-indent', 16 + iteration * 32);
         if (control.type === 'Container' && $(childrenArray[i]).children().length > 0) {
@@ -68,7 +68,7 @@ function processFile(evt, element, isCSS) {
             if (isCSS)
                 $(element).css('background-image', 'url("' + fr.result + '")');
             else
-                element.src = fr.result;
+                $(element).get(0).src = fr.result;
         };
         controls[$(element).data('identifier')].source = files[0].name;
         fr.readAsDataURL(files[0]);

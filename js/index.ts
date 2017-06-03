@@ -106,7 +106,7 @@ function buttonButtonClicked() {
 
     var control = new ButtonControl();
     controls[control.identifier] = control;
-    $(addedButton).attr('data-identifier', control.identifier);
+    $(addedButton).data('identifier', control.identifier);
     updateColors(control);
 
     controls[$(contextMenuControlRef).data('identifier')].children.push(control.identifier);
@@ -136,7 +136,7 @@ function divButtonClicked() {
     }
 
     addedDiv = addedDiv[0];
-    $(addedDiv).attr('data-identifier', control.identifier);
+    $(addedDiv).data('identifier', control.identifier);
     controls[control.identifier] = control;
     updateColors(control);
 
@@ -152,19 +152,14 @@ function imageButtonClicked() {
     if (contextMenuControlRef && controls[$(contextMenuControlRef).data('identifier')].type === 'Container') {
         addedImage = $('<img src="../images/default_image.jpg" class="defaultImage"/>');
         $(contextMenuControlRef).append(addedImage);
-
-        Waves.attach('.defaultImage', ['no-pointer']);
     }
     else {
         addedImage = $('<img src="../images/default_image.jpg" class="fullImage"/>');
         $('#siteArea').append(addedImage);
-
-        Waves.attach('.fullImage', ['no-pointer']);
     }
 
-    addedImage = addedImage.parent()[0];
     var control = new ImageControl();
-    $(addedImage).attr('data-identifier', control.identifier);
+    $(addedImage).data('identifier', control.identifier);
     controls[control.identifier] = control;
     updateColors(control);
 
@@ -187,7 +182,7 @@ function labelButtonClicked() {
 
     var control = new LabelControl();
     controls[control.identifier] = control;
-    $(addedLabel).attr('data-identifier', control.identifier);
+    $(addedLabel).data('identifier', control.identifier);
     updateColors(control);
 
     controls[$(contextMenuControlRef).data('identifier')].children.push(control.identifier);

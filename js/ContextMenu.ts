@@ -32,7 +32,7 @@ function paste() {
     var addedElement = $(appendTo).children()[$(contextMenuControlRef).children().length - 1];
 
     controls[copiedControl.identifier] = copiedControl;
-    $(addedElement).attr('data-identifier', copiedControl.identifier);
+    $(addedElement).data('identifier', copiedControl.identifier);
     updateColors(copiedControl);
 
     controls[$(appendTo).data('identifier')].children.push(copiedControl.identifier);
@@ -63,7 +63,7 @@ function moveDown() {
 
 function clearImageClicked() {
     if (controls[$(contextMenuControlRef).data('identifier')].type == "Image")
-        ($(contextMenuControlRef).children()[0] as HTMLImageElement).src = "../images/default_image.jpg";
+        (contextMenuControlRef as HTMLImageElement).src = "../images/default_image.jpg";
     else if (controls[$(contextMenuControlRef).data('identifier')].type == "Container")
         $(contextMenuControlRef).css('background-image', "url()");
 
@@ -204,13 +204,13 @@ function setGeneralContextMenu() {
     $('#fileSourceProperty').on('change', function (evt) {
         if ($('#fileSourceProperty').val()) {
             if (controls[$(contextMenuControlRef).data('identifier')].type == "Image")
-                processFile(evt, $(contextMenuControlRef).children()[0]);
+                processFile(evt, $(contextMenuControlRef));
             else if (controls[$(contextMenuControlRef).data('identifier')].type == "Container")
                 processFile(evt, $(contextMenuControlRef), true);
         }
         else {
             if (controls[$(contextMenuControlRef).data('identifier')].type == "Image")
-                ($(contextMenuControlRef).children()[0] as HTMLImageElement).src = "../images/default_image.jpg";
+                (contextMenuControlRef as HTMLImageElement).src = "../images/default_image.jpg";
             else if (controls[$(contextMenuControlRef).data('identifier')].type == "Container")
                 $(contextMenuControlRef).css('background-image', "url()");
 
@@ -233,8 +233,6 @@ function setGeneralContextMenu() {
     $('#heightProperty').on('input', function () {
         if (controls[$(contextMenuControlRef).data('identifier')].type !== 'Image')
             $(contextMenuControlRef).css('height', $('#heightProperty').val());
-        else
-            $($(contextMenuControlRef).children()[0]).css('height', $('#heightProperty').val());
 
         controls[$(contextMenuControlRef).data('identifier')].height = $('#heightProperty').val();
     });

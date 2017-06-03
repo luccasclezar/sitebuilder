@@ -6,7 +6,9 @@
 - ~~New file button;~~
 - ~~Make ContextMenu docked;~~
 - ~~Transition bottom of siteArea when ContextMenu is opened and closed;~~
-- Add export button;
+- ~~Add export button;~~
+- ~~Delete <i> elements from exported code;~~
+- Export image as separated files;
 - Copy is not correctly setting the identifiers of the content inside a container;
 - Add click events;
 - Pages navigation;

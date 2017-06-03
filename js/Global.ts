@@ -1,3 +1,5 @@
+declare function saveAs(blob: Blob, fileName: string): void;
+
 function move (array, from, to) {
     array.splice(to, 0, array.splice(from, 1)[0]);
     return array;
@@ -58,7 +60,7 @@ function populateList(childrenArray, iteration) {
         var control = controls[$(childrenArray[i]).data('identifier')];
 
         var addedChild = $('<div class="listControl"><p>' + control.type + '</p></div>');
-        $(addedChild).attr('data-identifier', control.identifier + 10000);
+        $(addedChild).data('identifier', control.identifier + 10000);
         $('#controlsList').append(addedChild);
 
         $(addedChild).click(function () {
@@ -67,7 +69,7 @@ function populateList(childrenArray, iteration) {
             }
 
             var identifier = $(this).data('identifier') - 10000;
-            (controls[identifier].type, getElementByIdentifier(identifier));
+            openMenu(controls[identifier].type, getElementByIdentifier(identifier));
         });
 
         $(addedChild).css('text-indent', 16 + iteration * 32);
@@ -89,7 +91,7 @@ function processFile(evt, element, isCSS = false) {
             if(isCSS)
                 $(element).css('background-image', 'url("' + fr.result + '")');
             else
-                element.src = fr.result;
+                ($(element).get(0) as HTMLImageElement).src = fr.result;
         }
         controls[$(element).data('identifier')].source = files[0].name;
         fr.readAsDataURL(files[0]);
