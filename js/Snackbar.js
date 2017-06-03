@@ -9,7 +9,6 @@ function showSnackbar(text) {
     else {
         $('#snackbar').transition({ y: '64px' }, 300, 'easeInOutCubic', function () {
             $(this).remove();
-
             $(document.body).append('<div style="position: fixed; top: 100%" class="shadow-3" id="snackbar">' + text + '<button id="snackbarButton" onclick="closeSnackbar()">Close</button></div>');
             Waves.attach('#snackbarButton');
             snackbar = $('#snackbar');
@@ -17,7 +16,6 @@ function showSnackbar(text) {
         });
     }
 }
-
 function closeSnackbar() {
     if (snackbar !== null) {
         $('#snackbar').transition({ y: '64px' }, 300, 'easeInOutCubic', function () {
@@ -26,3 +24,4 @@ function closeSnackbar() {
         });
     }
 }
+//# sourceMappingURL=Snackbar.js.map

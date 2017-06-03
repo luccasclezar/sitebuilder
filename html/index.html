@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>SiteBuilder 1.0</title>
+    <title>SiteBuilder</title>
 
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
 
@@ -21,10 +21,11 @@
 
     <script type="text/javascript" src="../js/Theme.js"></script>
     <script type="text/javascript" src="../js/Control.js"></script>
-    <script type="text/javascript" src="../js/SaveLoad.js"></script>
+    <script type="text/javascript" src="../js/Export.js"></script>
     <script type="text/javascript" src="../js/Snackbar.js"></script>
     <script type="text/javascript" src="../js/Global.js"></script>
     <script type="text/javascript" src="../js/ContextMenu.js"></script>
+    <script type="text/javascript" src="../js/SaveLoad.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
 </head>
 
@@ -34,7 +35,9 @@
         <button class="navButton" id="saveButton" onclick="save()"><i class="material-icons">save</i></button>
         <button class="navButton" id="loadButton" onclick="load()"><i class="material-icons">folder</i></button>
         <button class="navButton" id="themeButton" onclick="themeClicked()"><i class="material-icons">color_lens</i></button>
-        <p>SiteBuilder 1.0</p>
+        <button class="navButton" id="codeButton" onclick="codeClicked()"><i class="material-icons">code</i></button>
+        <button class="navButton" id="newFileButton" onclick="newFileClicked()"><i class="material-icons">create_new_folder</i></button>
+        <p>SiteBuilder</p>
     </div>
     <div class="shadow-2 rightNav" id="controlsList">
     </div>
@@ -95,10 +98,11 @@
         <button class="toolButton" id="buttonButton" onclick="buttonButtonClicked()" />
         <label for="buttonButton"><i class="material-icons">view_stream</i></label>
     </div>
+    <div id="background"></div>
     <div id="siteArea">
 
     </div>
-    <div class="shadow-4" id="contextMenu">
+    <div id="contextMenu">
         <div class="property menuHeader">
             <b><p class="propertyName" id="controlName">Label</p></b>
 
@@ -114,7 +118,7 @@
 
                 <button class="contextMenuButton" id="moveDown" onclick="moveDown()" />
                 <label for="moveDown"><i class="material-icons">keyboard_arrow_down</i></label>
-                
+
                 <button class="contextMenuButton" id="paste" onclick="paste()" />
                 <label for="paste"><i class="material-icons">content_paste</i></label>
 
@@ -229,6 +233,15 @@
             </div>
             <div class="buttonsLayout">
                 <button onclick="dialogCancel('loadDialog')" class="materialButton">CANCEL</button>
+            </div>
+        </div>
+    </div>
+    <div id="codeDialog" class="dialog">
+        <div class="dialogCard" id="codeCard">
+            <p>Code</p>
+            <textarea id="codeText" class="textArea" style="width: 100%; height: 80%; max-height: 80%"></textarea>
+            <div class="buttonsLayout">
+                <button onclick="dialogCancel('codeDialog')" class="materialButton">CANCEL</button>
             </div>
         </div>
     </div>

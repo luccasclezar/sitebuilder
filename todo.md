@@ -3,6 +3,10 @@
 - ~~Add copy/paste of controls;~~
 - ~~Image as background;~~
 - ~~Ctrl + C to copy and Ctrl + V to paste;~~
-- New file button;
+- ~~New file button;~~
+- ~~Make ContextMenu docked;~~
+- ~~Transition bottom of siteArea when ContextMenu is opened and closed;~~
+- Add export button;
+- Copy is not correctly setting the identifiers of the content inside a container;
 - Add click events;
 - Pages navigation;

@@ -135,23 +135,38 @@ button {
     z-index: 1;
 }
 
+#background {
+    position: fixed;
+    left: 64px;
+    top: 56px;
+    bottom: 0;
+    right: 0;
+
+    background: url('../images/squared_background.png') repeat;
+}
+
 #siteArea {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     left: 64px;
     right: 0px;
     top: 56px;
+    
     display: inline-block;
+    overflow-y: scroll;
 }
 
 #contextMenu {
-    position: absolute;
-    height: auto;
-    width: 60%;
-    top: 64px;
+    position: fixed;
+    height: 320px;
+    width: calc(100% - 64px);
+    bottom: -320px;
+
     background-color: #EEE;
-    border-radius: 4px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, .8);
     color: rgba(0,0,0,.87);
-    margin-left: 72px;
+    margin-left: 64px;
+    overflow-y: auto;
     visibility: hidden;
     z-index: 98;
 }
@@ -315,4 +330,12 @@ button {
     right: 16px;
 
     float: right;
+}
+
+#codeCard {
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
 }
