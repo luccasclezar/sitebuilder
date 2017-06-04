@@ -1,4 +1,4 @@
-/* 
+/*
 Colors:
 
 Primary
@@ -81,7 +81,7 @@ button {
 
 .rightNav {
     position: fixed;
-    
+
     top: 56px;
     left: 100%;
 
@@ -146,12 +146,13 @@ button {
 }
 
 #siteArea {
+    display: grid;
     position: fixed;
     bottom: 0;
     left: 64px;
     right: 0px;
     top: 56px;
-    
+
     display: inline-block;
     overflow-y: scroll;
 }
@@ -307,7 +308,7 @@ button {
 
 #loadCard {
     position: absolute;
-    
+
     top: calc(50% - 228px);
     left: calc(50% - 174px);
 

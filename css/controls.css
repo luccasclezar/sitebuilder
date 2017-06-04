@@ -1,4 +1,5 @@
 .defaultDiv {
+    display: flex;
     position: relative;
     height: 156px;
     width: 100%;

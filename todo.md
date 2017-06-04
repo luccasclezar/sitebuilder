@@ -8,7 +8,9 @@
 - ~~Transition bottom of siteArea when ContextMenu is opened and closed;~~
 - ~~Add export button;~~
 - ~~Delete <i> elements from exported code;~~
-- Export image as separated files;
+- ~~Export image as separated files;~~ [canceled]
+- ~~[BUG] Images are with bottom margin when exported;~~
+- ~~[BUG] Containers are blocking more than one item on the same row when exported;~~
 - Copy is not correctly setting the identifiers of the content inside a container;
 - Add click events;
 - Pages navigation;

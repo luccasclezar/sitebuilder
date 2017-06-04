@@ -49,7 +49,7 @@ function moveUp() {
     var currentIndex = $(contextMenuControlRef).index();
 
     if (currentIndex !== 0) {
-        swapElements(contextMenuControlRef, $(contextMenuControlRef).parent().children()[currentIndex - 1]);
+        swapElements((contextMenuControlRef).get(0), $(contextMenuControlRef).parent().children()[currentIndex - 1]);
     }
 }
 
@@ -57,7 +57,7 @@ function moveDown() {
     var currentIndex = $(contextMenuControlRef).index();
 
     if (currentIndex !== $(contextMenuControlRef).parent().children().length - 1) {
-        swapElements(contextMenuControlRef, $(contextMenuControlRef).parent().children()[currentIndex + 1]);
+        swapElements($(contextMenuControlRef).get(0), $(contextMenuControlRef).parent().children()[currentIndex + 1]);
     }
 }
 
