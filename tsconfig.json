@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "module": "amd",
-    "compileOnSave": true,
     "removeComments": false,
     "preserveConstEnums": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "js"
   }
 }

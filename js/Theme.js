@@ -1,4 +1,4 @@
-var Theme = (function () {
+var Theme = /** @class */ (function () {
     function Theme() {
         this.primaryDark = "#00796B";
         this.primary = "#009688";

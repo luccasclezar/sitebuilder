@@ -38,7 +38,7 @@ function getCopy(control) {
     copiedControl.identifier = id++;
     return copiedControl;
 }
-var Control = (function () {
+var Control = /** @class */ (function () {
     function Control() {
         this.identifier = id++;
         this.type = "";
@@ -58,7 +58,7 @@ var Control = (function () {
     }
     return Control;
 }());
-var ButtonControl = (function (_super) {
+var ButtonControl = /** @class */ (function (_super) {
     __extends(ButtonControl, _super);
     function ButtonControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -72,7 +72,7 @@ var ButtonControl = (function (_super) {
     }
     return ButtonControl;
 }(Control));
-var ContainerControl = (function (_super) {
+var ContainerControl = /** @class */ (function (_super) {
     __extends(ContainerControl, _super);
     function ContainerControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -90,7 +90,7 @@ var ContainerControl = (function (_super) {
     }
     return ContainerControl;
 }(Control));
-var ImageControl = (function (_super) {
+var ImageControl = /** @class */ (function (_super) {
     __extends(ImageControl, _super);
     function ImageControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -102,7 +102,7 @@ var ImageControl = (function (_super) {
     }
     return ImageControl;
 }(Control));
-var LabelControl = (function (_super) {
+var LabelControl = /** @class */ (function (_super) {
     __extends(LabelControl, _super);
     function LabelControl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
