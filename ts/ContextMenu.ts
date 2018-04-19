@@ -116,52 +116,52 @@ function calculateWidth(element) {
 function setGeneralContextMenu() {
     /********** Margin **********/
     $('#marginLeftProperty').on('input', function () {
-        $(contextMenuControlRef).css('margin-left', $('#marginLeftProperty').val());
+        $(contextMenuControlRef).css('margin-left', $('#marginLeftProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].marginLeft = $('#marginLeftProperty').val();
     });
     $('#marginTopProperty').on('input', function () {
-        $(contextMenuControlRef).css('margin-top', $('#marginTopProperty').val());
+        $(contextMenuControlRef).css('margin-top', $('#marginTopProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].marginTop = $('#marginTopProperty').val();
     });
     $('#marginRightProperty').on('input', function () {
-        $(contextMenuControlRef).css('margin-right', $('#marginRightProperty').val());
+        $(contextMenuControlRef).css('margin-right', $('#marginRightProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].marginRight = $('#marginRightProperty').val();
     });
     $('#marginBottomProperty').on('input', function () {
-        $(contextMenuControlRef).css('margin-bottom', $('#marginBottomProperty').val());
+        $(contextMenuControlRef).css('margin-bottom', $('#marginBottomProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].marginBottom = $('#marginBottomProperty').val();
     });
     /********** Margin end **********/
 
     /********** Padding **********/
     $('#paddingLeftProperty').on('input', function () {
-        $(contextMenuControlRef).css('padding-left', $('#paddingLeftProperty').val());
+        $(contextMenuControlRef).css('padding-left', $('#paddingLeftProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].paddingLeft = $('#paddingLeftProperty').val();
         calculateWidth(contextMenuControlRef);
     });
     $('#paddingTopProperty').on('input', function () {
-        $(contextMenuControlRef).css('padding-top', $('#paddingTopProperty').val());
+        $(contextMenuControlRef).css('padding-top', $('#paddingTopProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].paddingTop = $('#paddingTopProperty').val();
     });
     $('#paddingRightProperty').on('input', function () {
-        $(contextMenuControlRef).css('padding-right', $('#paddingRightProperty').val());
+        $(contextMenuControlRef).css('padding-right', $('#paddingRightProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].paddingRight = $('#paddingRightProperty').val();
         calculateWidth(contextMenuControlRef);
     });
     $('#paddingBottomProperty').on('input', function () {
-        $(contextMenuControlRef).css('padding-bottom', $('#paddingBottomProperty').val());
+        $(contextMenuControlRef).css('padding-bottom', $('#paddingBottomProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].paddingBottom = $('#paddingBottomProperty').val();
     });
     /********** Padding end **********/
 
     /********** Position **********/
     $('#leftProperty').on('input', function () {
-        $(contextMenuControlRef).css('left', $('#leftProperty').val());
+        $(contextMenuControlRef).css('left', $('#leftProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].left = $('#leftProperty').val();
         calculateWidth(contextMenuControlRef);
     });
     $('#topProperty').on('input', function () {
-        $(contextMenuControlRef).css('top', $('#topProperty').val());
+        $(contextMenuControlRef).css('top', $('#topProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].top = $('#topProperty').val();
     });
     $('#rightProperty').on('input', function () {
@@ -169,7 +169,7 @@ function setGeneralContextMenu() {
         calculateWidth(contextMenuControlRef);
     });
     $('#bottomProperty').on('input', function () {
-        $(contextMenuControlRef).css('bottom', $('#bottomProperty').val());
+        $(contextMenuControlRef).css('bottom', $('#bottomProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].bottom = $('#bottomProperty').val();
     });
     $('#widthProperty').on('input', function () {
@@ -177,13 +177,13 @@ function setGeneralContextMenu() {
         calculateWidth(contextMenuControlRef);
     });
     $('#heightProperty').on('input', function () {
-        $(contextMenuControlRef).css('height', $('#heightProperty').val());
+        $(contextMenuControlRef).css('height', $('#heightProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].height = $('#heightProperty').val();
     });
     /********** Position end **********/
 
     $('#colorProperty').on('input', function () {
-        var val = $('#colorProperty').val();
+        var val = $('#colorProperty').val() as string;
         controls[$(contextMenuControlRef).data('identifier')].color = val;
 
         if (val.includes('#'))
@@ -193,12 +193,12 @@ function setGeneralContextMenu() {
     });
     $('#elevationProperty').on('input', function () {
         var isInset = ($('#div-insetProperty:checked').val() === 'on');
-        var elevationValue = $('#elevationProperty').val();
+        var elevationValue = $('#elevationProperty').val() as string;
 
         $(contextMenuControlRef).css('box-shadow',
-            '0 ' + (!isInset ? elevationValue + 'px ' : '0 ') + (parseInt(elevationValue) + elevationValue * .5) + 'px rgba(0,0,0, .4)' + (isInset ? ' inset' : ""));
+            '0 ' + (!isInset ? elevationValue + 'px ' : '0 ') + (parseInt(elevationValue) + parseInt(elevationValue) * .5) + 'px rgba(0,0,0, .4)' + (isInset ? ' inset' : ""));
 
-        $(contextMenuControlRef).css('z-index', $('#insetProperty:checked').val() !== 'on' ? $('#elevationProperty').val() : '0');
+        $(contextMenuControlRef).css('z-index', $('#insetProperty:checked').val() as string !== 'on' ? $('#elevationProperty').val() as string : '0');
         controls[$(contextMenuControlRef).data('identifier')].elevation = $('#elevationProperty').val();
     });
     $('#fileSourceProperty').on('change', function (evt) {
@@ -218,7 +218,7 @@ function setGeneralContextMenu() {
         }
     });
     $('#fontColorProperty').on('input', function () {
-        var val = $('#fontColorProperty').val();
+        var val = $('#fontColorProperty').val() as string;
         controls[$(contextMenuControlRef).data('identifier')].fontColor = val;
 
         if (val.includes('#'))
@@ -227,41 +227,41 @@ function setGeneralContextMenu() {
             updateColors(controls[$(contextMenuControlRef).data('identifier')]);
     });
     $('#fontSizeProperty').on('input', function () {
-        $(contextMenuControlRef).css('font-size', $('#fontSizeProperty').val());
+        $(contextMenuControlRef).css('font-size', $('#fontSizeProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].fontSize = $('#fontSizeProperty').val();
     });
     $('#heightProperty').on('input', function () {
         if (controls[$(contextMenuControlRef).data('identifier')].type !== 'Image')
-            $(contextMenuControlRef).css('height', $('#heightProperty').val());
+            $(contextMenuControlRef).css('height', $('#heightProperty').val() as string);
 
         controls[$(contextMenuControlRef).data('identifier')].height = $('#heightProperty').val();
     });
     $('#horizontalAlignmentProperty').on('input', function () {
-        $(contextMenuControlRef).css('float', $('#horizontalAlignmentProperty').val());
+        $(contextMenuControlRef).css('float', $('#horizontalAlignmentProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].horizontalAlignment = $('#horizontalAlignmentProperty').val();
     });
     $('#horizontalTextAlignmentProperty').on('input', function () {
-        $(contextMenuControlRef).css('text-align', $('#horizontalTextAlignmentProperty').val());
+        $(contextMenuControlRef).css('text-align', $('#horizontalTextAlignmentProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].horizontalTextAlignment = $('#horizontalTextAlignmentProperty').val();
     });
     $('#insetProperty').change(function () {
-        if (this.checked && !$(contextMenuControlRef).css('box-shadow').includes('inset')) {
+        if ((this as HTMLInputElement).checked && !$(contextMenuControlRef).css('box-shadow').includes('inset')) {
             $(contextMenuControlRef).css('box-shadow', $(contextMenuControlRef).css('box-shadow') + ' inset');
         }
 
-        if (!this.checked && $(contextMenuControlRef).css('box-shadow').includes('inset')) {
+        if (!(this as HTMLInputElement).checked && $(contextMenuControlRef).css('box-shadow').includes('inset')) {
             $(contextMenuControlRef).css('box-shadow', $(contextMenuControlRef).css('box-shadow').replace(' inset', ''));
         }
 
-        $(contextMenuControlRef).css('z-index', !this.checked ? $('#elevationProperty').val() : '0');
+        $(contextMenuControlRef).css('z-index', !(this as HTMLInputElement).checked ? $('#elevationProperty').val() as string : '0');
         controls[$(contextMenuControlRef).data('identifier')].inset = $('#insetProperty').val();
     });
     $('#textProperty').on('input', function () {
-        contextMenuControlRef.innerHTML = $('#textProperty').val().split("\n").join("<br>");
-        controls[$(contextMenuControlRef).data('identifier')].text = $('#textProperty').val().split("\n").join("<br>");
+        contextMenuControlRef.innerHTML = ($('#textProperty').val() as string).split("\n").join("<br>");
+        controls[$(contextMenuControlRef).data('identifier')].text = ($('#textProperty').val() as string).split("\n").join("<br>");
     });
     $('#verticalAlignmentProperty').on('input', function () {
-        $(contextMenuControlRef).css('align-self', $('#verticalAlignmentProperty').val());
+        $(contextMenuControlRef).css('align-self', $('#verticalAlignmentProperty').val() as string);
         controls[$(contextMenuControlRef).data('identifier')].verticalAlignment = $('#verticalAlignmentProperty').val();
     });
 }

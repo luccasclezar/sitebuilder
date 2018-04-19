@@ -161,7 +161,7 @@ function setGeneralContextMenu() {
     $('#elevationProperty').on('input', function () {
         var isInset = ($('#div-insetProperty:checked').val() === 'on');
         var elevationValue = $('#elevationProperty').val();
-        $(contextMenuControlRef).css('box-shadow', '0 ' + (!isInset ? elevationValue + 'px ' : '0 ') + (parseInt(elevationValue) + elevationValue * .5) + 'px rgba(0,0,0, .4)' + (isInset ? ' inset' : ""));
+        $(contextMenuControlRef).css('box-shadow', '0 ' + (!isInset ? elevationValue + 'px ' : '0 ') + (parseInt(elevationValue) + parseInt(elevationValue) * .5) + 'px rgba(0,0,0, .4)' + (isInset ? ' inset' : ""));
         $(contextMenuControlRef).css('z-index', $('#insetProperty:checked').val() !== 'on' ? $('#elevationProperty').val() : '0');
         controls[$(contextMenuControlRef).data('identifier')].elevation = $('#elevationProperty').val();
     });

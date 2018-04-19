@@ -29,7 +29,7 @@ function updateThemePanel() {
 
 function setThemeBindings() {
     $('#theme-Theme').on('change', function () {
-        if (this.value === 'light') {
+        if ((this as HTMLInputElement).value === 'light') {
             theme.background = "#EEE";
             theme.backgroundDark = "#E0E0E0";
             theme.card = "#FFF";
@@ -50,15 +50,15 @@ function setThemeBindings() {
         updateAllColors();
     });
     $('#theme-Primary').on('input', function () {
-        theme.primary = this.value;
+        theme.primary = (this as HTMLInputElement).value;
         updateAllColors();
     });
     $('#theme-PrimaryDark').on('input', function () {
-        theme.primaryDark = this.value;
+        theme.primaryDark = (this as HTMLInputElement).value;
         updateAllColors();
     });
     $('#theme-Accent').on('input', function () {
-        theme.accent = this.value;
+        theme.accent = (this as HTMLInputElement).value;
         updateAllColors();
     });
 }

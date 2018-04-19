@@ -1,0 +1,20 @@
+{
+  "name": "sitebuilder",
+  "version": "1.0.0",
+  "description": "It's a SiteBuilder",
+  "main": "./js/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jquery": "^3.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://luccasclezar@bitbucket.org/luccasclezar/sitebuilder.git"
+  },
+  "author": "Luccas Clezar",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/luccasclezar/sitebuilder#readme"
+}
