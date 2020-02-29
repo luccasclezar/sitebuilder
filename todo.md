@@ -1,4 +1,4 @@
-#TODO
+# TODO
 - ~~Make Ctrl + S open save dialog;~~
 - ~~Add copy/paste of controls;~~
 - ~~Image as background;~~

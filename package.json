@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "It's a SiteBuilder",
   "main": "./js/index.js",
-  "dependencies": {},
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
   "devDependencies": {
     "@types/jquery": "^3.3.1"
   },
